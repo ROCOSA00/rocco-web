@@ -50,22 +50,6 @@
   var year = document.querySelector('[data-year]');
   if (year) year.textContent = String(new Date().getFullYear());
 
-  /* ---------- Contactos opcionales (email / WhatsApp) ---------- */
-
-  function showContact(kind, href, label) {
-    var item = document.querySelector('[data-contact="' + kind + '"]');
-    if (!item) return;
-    item.querySelector('[data-contact-link]').href = href;
-    item.querySelector('[data-contact-value]').textContent = label;
-    item.hidden = false;
-  }
-
-  if (cfg.email) showContact('email', 'mailto:' + cfg.email, cfg.email);
-  if (cfg.whatsapp) {
-    var digits = String(cfg.whatsapp).replace(/\D/g, '');
-    showContact('whatsapp', 'https://wa.me/' + digits, '+' + digits);
-  }
-
   /* ---------- Formulario de booking → Supabase ---------- */
 
   var form = document.getElementById('booking-form');
@@ -81,8 +65,9 @@
   }
 
   function fallbackHtml() {
-    return 'Escríbeme por Instagram: <a href="' + (cfg.instagram || 'https://www.instagram.com/djroccolive/') +
-      '" target="_blank" rel="noopener">@djroccolive</a>.';
+    var email = cfg.email || 'djroccolive@gmail.com';
+    return 'Escríbeme a <a href="mailto:' + email + '">' + email + '</a> o por Instagram: <a href="' +
+      (cfg.instagram || 'https://www.instagram.com/djroccolive/') + '" target="_blank" rel="noopener">@djroccolive</a>.';
   }
 
   function clean(value) {

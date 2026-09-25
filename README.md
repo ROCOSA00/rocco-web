@@ -9,7 +9,7 @@ Es HTML, CSS y JavaScript sin dependencias ni paso de compilación: se puede pub
 ```
 index.html                  Contenido de la web (textos, salas, eventos)
 css/styles.css              Estilos (colores y tipografías arriba del todo, en :root)
-js/config.js                Datos de contacto y conexión con Supabase
+js/config.js                Conexión del formulario con Supabase
 js/main.js                  Menú móvil, cabecera y formulario de booking
 assets/logo.svg             Logo (recortado al contenido)
 assets/img/                 Fotos optimizadas en WebP (2 tamaños cada una)
@@ -25,7 +25,7 @@ supabase/booking_requests.sql  Tabla para guardar solicitudes de booking
 3. **Bio**
 4. **Experiencia**: salas (Cocoa, Titus, Classic, Sala Duvet, Malalts de Festa, Particular, Sakova, Sala Privat) y eventos (El Jaleo, Attic, Hotel W, Zeta Dance Club).
 5. **Banda de foto** (Classic Mataró).
-6. **Booking**: formulario + enlaces a Instagram y Linktree.
+6. **Booking**: formulario + email, teléfono, WhatsApp, Instagram y Linktree.
 
 ## Verla en local
 
@@ -52,13 +52,13 @@ El formulario guarda cada solicitud en la tabla `booking_requests` de Supabase. 
 
 La web solo puede **insertar** solicitudes (no leerlas ni borrarlas). Eso lo garantizan las políticas RLS del SQL. Por eso la *publishable key* puede estar en `js/config.js`. **No pongas nunca en el repo la contraseña de la base de datos ni la *secret key*.**
 
-Si Supabase no responde, el formulario muestra un mensaje con el enlace a Instagram para que nadie se quede sin poder contactar.
+Si Supabase no responde, el formulario muestra un mensaje con el email y el Instagram para que nadie se quede sin poder contactar.
 
 ## Cambios habituales
 
 | Quiero… | Dónde |
 | --- | --- |
-| Mostrar email o WhatsApp en Booking | `js/config.js` → `email` / `whatsapp` |
+| Cambiar email, teléfono o WhatsApp | `index.html` → lista `<ul class="contact-links">` y pie (`footer-links`) |
 | Añadir o quitar una sala | `index.html` → lista `<ul class="venues">` |
 | Añadir un evento | `index.html` → lista `<ul class="event-list">` |
 | Cambiar la bio | `index.html` → sección `id="bio"` |

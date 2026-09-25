@@ -1,6 +1,6 @@
 /*
- * Configuración de la web. Es lo único que necesitas tocar para cambiar
- * datos de contacto o la conexión con Supabase.
+ * Configuración del formulario de booking (conexión con Supabase).
+ * Los datos de contacto visibles están en index.html, sección Booking.
  *
  * La "publishable key" de Supabase está pensada para ir en el navegador:
  * solo permite lo que dejen las políticas RLS (aquí, enviar solicitudes
@@ -12,9 +12,7 @@ window.ROCCO_CONFIG = {
   supabaseKey: 'sb_publishable_oEmNtIk2jhdxVehHDS-Mbg_tkzWpA7T',
   bookingTable: 'booking_requests',
 
-  // Opcionales: si los rellenas aparecen en la sección Booking.
-  email: '',     // p. ej. 'booking@tudominio.com'
-  whatsapp: '',  // número con prefijo y sin "+", p. ej. '34600111222'
-
+  // Se muestran si el formulario no consigue enviar la solicitud.
+  email: 'djroccolive@gmail.com',
   instagram: 'https://www.instagram.com/djroccolive/',
 };
