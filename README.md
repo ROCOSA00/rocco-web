@@ -41,7 +41,7 @@ python3 -m http.server 8000
 
 **Opción B: GitHub Pages.** En el repo, *Settings → Pages → Build and deployment*: *Deploy from a branch*, rama `main`, carpeta `/ (root)`. Quedará en `https://rocosa00.github.io/rocco-web/`.
 
-Cuando tengas el dominio definitivo, cambia en `index.html` la etiqueta `og:image` por la URL completa (por ejemplo `https://tudominio.com/assets/og-image.jpg`) para que la vista previa al compartir funcione en todas las apps.
+La web está publicada en **https://rocco-web-five.vercel.app**. Si conectas un dominio propio, cambia esa dirección en `index.html` (etiquetas `canonical`, `og:url`, `og:image` y `twitter:image`) para que la vista previa al compartir apunte al dominio nuevo.
 
 ## Formulario de booking (Supabase)
 
