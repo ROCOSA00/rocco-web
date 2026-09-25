@@ -27,7 +27,8 @@ supabase/booking_notifications.sql  Aviso por email de cada solicitud nueva
 3. **Bio**
 4. **Experiencia**: salas (Cocoa, Titus, Classic, Sala Duvet, Malalts de Festa, Particular, Sakova, Sala Privat) y eventos (El Jaleo, Attic, Hotel W, Zeta Dance Club).
 5. **Banda de foto** (Classic Mataró).
-6. **Booking**: formulario + email, teléfono, WhatsApp, Instagram y Linktree.
+6. **Música**: reproductor de SoundCloud con la pista destacada (*Se Nota (Original Mix)*) y enlaces a SoundCloud, YouTube y TikTok.
+7. **Booking**: formulario + email, Instagram y Linktree.
 
 ## Verla en local
 
@@ -73,7 +74,8 @@ La clave queda cifrada en Supabase Vault. No la subas nunca a GitHub. Para cambi
 
 | Quiero… | Dónde |
 | --- | --- |
-| Cambiar email, teléfono o WhatsApp | `index.html` → lista `<ul class="contact-links">` y pie (`footer-links`) |
+| Cambiar el email o las redes | `index.html` → listas `<ul class="contact-links">` (Música y Booking) y pie (`footer-links`) |
+| Cambiar la pista destacada | `index.html` → sección `id="musica"`: el título en `player-title` y la URL de la pista en el `src` del `<iframe>` y en `player-link` |
 | Añadir o quitar una sala | `index.html` → lista `<ul class="venues">` |
 | Añadir un evento | `index.html` → lista `<ul class="event-list">` |
 | Cambiar la bio | `index.html` → sección `id="bio"` |
