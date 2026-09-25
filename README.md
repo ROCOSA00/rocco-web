@@ -13,6 +13,7 @@ js/config.js                Conexión del formulario con Supabase
 js/main.js                  Pantalla de carga, menú móvil, cabecera y formulario
 assets/logo.svg             Logo (recortado al contenido)
 assets/img/                 Fotos optimizadas en WebP (2 tamaños cada una)
+assets/video/               Vídeo de portada (horizontal y vertical) y su primer fotograma
 assets/og-image.jpg         Imagen al compartir el enlace (WhatsApp, Instagram…)
 assets/favicon-32.png       Icono de pestaña (los destellos del logo)
 supabase/booking_requests.sql  Tabla para guardar solicitudes de booking
@@ -22,7 +23,7 @@ supabase/booking_notifications.sql  Aviso por email de cada solicitud nueva
 ## Secciones
 
 0. **Pantalla de carga**: el logo late a 124 BPM sobre una barra de progreso; al terminar, el fondo se desvanece y el logo vuela a su sitio en la portada.
-1. **Inicio**: foto en cabina, logo, estilos y botones de Booking e Instagram.
+1. **Inicio**: vídeo en bucle de fondo (sin sonido, con botón para pausarlo), logo, estilos y botones de Booking e Instagram.
 2. **Cinta de estilos**: reggaetón, urbano, hits comerciales, afro, house y pachanga.
 3. **Bio**
 4. **Experiencia**: salas (Cocoa, Titus, Classic, Sala Duvet, Malalts de Festa, Particular, Sakova, Sala Privat) y eventos (El Jaleo, Attic, Hotel W, Zeta Dance Club).
@@ -82,3 +83,4 @@ La clave queda cifrada en Supabase Vault. No la subas nunca a GitHub. Para cambi
 | Cambiar el color de acento | `css/styles.css` → `--amber` |
 | Cambiar una foto | Sustituye el `.webp` en `assets/img/` con el mismo nombre |
 | Alargar o acortar la pantalla de carga | `js/main.js` → `MIN_TIME` (milisegundos) |
+| Cambiar el vídeo de portada | Sustituye `assets/video/hero-landscape.mp4` (1280×720) y `hero-portrait.mp4` (608×1080, para móvil) por clips MP4 H.264 sin audio de unos 12 s y menos de 4 MB, y sus `.webp` por el primer fotograma de cada uno |
