@@ -33,7 +33,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap">
   <link rel="preload" as="image" href="assets/logo.svg" type="image/svg+xml">
-  <link rel="preload" as="image" href="assets/img/rocco-cabina-1920.webp" imagesrcset="assets/img/rocco-cabina-1080.webp 1080w, assets/img/rocco-cabina-1920.webp 1920w" imagesizes="100vw">
+  <link rel="preload" as="image" href="assets/video/hero-landscape.webp" media="(orientation: landscape)">
+  <link rel="preload" as="image" href="assets/video/hero-portrait.webp" media="(orientation: portrait)">
   <link rel="stylesheet" href="css/styles.css">
 
   <script type="application/ld+json">
@@ -45,9 +46,14 @@
     "jobTitle": "DJ",
     "description": "DJ urbano del Maresme con una propuesta fresca, versátil y enfocada a la pista.",
     "email": "djroccolive@gmail.com",
-    "telephone": "+34645356592",
     "homeLocation": { "@type": "Place", "name": "Maresme, Barcelona" },
-    "sameAs": ["https://www.instagram.com/djroccolive/", "https://linktr.ee/djroccolive"]
+    "sameAs": [
+      "https://www.instagram.com/djroccolive/",
+      "https://soundcloud.com/djroccolive",
+      "https://www.youtube.com/@djroccolive",
+      "https://www.tiktok.com/@djroccolive",
+      "https://linktr.ee/djroccolive"
+    ]
   }
   </script>
 </head>
@@ -78,7 +84,7 @@
     <nav class="nav" id="menu" aria-label="Principal">
       <a href="#bio">Bio</a>
       <a href="#experiencia">Experiencia</a>
-      <a href="https://www.instagram.com/djroccolive/" target="_blank" rel="noopener">Instagram</a>
+      <a href="#musica">Música</a>
       <a href="#booking" class="nav-cta">Booking</a>
     </nav>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">
@@ -89,12 +95,16 @@
 
   <main id="contenido">
     <section class="hero" id="inicio">
-      <img class="hero-media"
-           src="assets/img/rocco-cabina-1920.webp"
-           srcset="assets/img/rocco-cabina-1080.webp 1080w, assets/img/rocco-cabina-1920.webp 1920w"
-           sizes="100vw" width="1920" height="1280"
-           alt="Rocco pinchando en cabina frente a una pista llena"
-           fetchpriority="high">
+      <picture>
+        <source media="(orientation: portrait)" srcset="assets/video/hero-portrait.webp" width="608" height="1080">
+        <img class="hero-media"
+             src="assets/video/hero-landscape.webp" width="1280" height="720"
+             alt="Rocco pinchando en cabina frente a una pista llena"
+             fetchpriority="high">
+      </picture>
+      <video class="hero-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"
+             data-src-landscape="assets/video/hero-landscape.mp4"
+             data-src-portrait="assets/video/hero-portrait.mp4"></video>
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="grain" aria-hidden="true"></div>
 
@@ -113,7 +123,10 @@
               </a>
             </div>
           </div>
-          <p class="hero-coords mono" aria-label="Coordenadas de Mataró">41.54° N<br>2.44° E</p>
+          <div class="hero-meta">
+            <p class="hero-coords mono" aria-label="Coordenadas de Mataró">41.54° N<br>2.44° E</p>
+            <button class="video-toggle" type="button" hidden>Pausar vídeo</button>
+          </div>
         </div>
       </div>
     </section>
@@ -201,6 +214,55 @@
       </div>
     </section>
 
+    <section class="section music" id="musica" aria-labelledby="music-title">
+      <div class="wrap music-grid">
+        <div class="music-head">
+          <p class="eyebrow"><span class="spark" aria-hidden="true"></span>Música</p>
+          <h2 id="music-title" class="h-display">Suena así</h2>
+          <p class="lede">Dale al play a la pista destacada y sígueme en SoundCloud, YouTube y TikTok.</p>
+        </div>
+
+        <ul class="contact-links music-links">
+          <li>
+            <a href="https://soundcloud.com/djroccolive" target="_blank" rel="noopener">
+              <span class="contact-label">SoundCloud</span>
+              <span class="contact-value">djroccolive</span>
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/@djroccolive" target="_blank" rel="noopener">
+              <span class="contact-label">YouTube</span>
+              <span class="contact-value">@djroccolive</span>
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.tiktok.com/@djroccolive" target="_blank" rel="noopener">
+              <span class="contact-label">TikTok</span>
+              <span class="contact-value">@djroccolive</span>
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+          </li>
+        </ul>
+
+        <div class="music-player">
+          <div class="player-head">
+            <span class="player-label">Pista destacada</span>
+            <span class="player-title">Se Nota (Rocco Original Mix)</span>
+          </div>
+          <iframe class="player-frame"
+                  title="Se Nota (Rocco Original Mix) en SoundCloud"
+                  loading="lazy" allow="autoplay"
+                  src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/djroccolive/se-nota-rocco-original-mix&amp;color=%23ffa62b&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=false&amp;visual=true"></iframe>
+          <a class="player-link" href="https://soundcloud.com/djroccolive/se-nota-rocco-original-mix" target="_blank" rel="noopener">
+            Escuchar en SoundCloud
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <section class="section booking" id="booking" aria-labelledby="booking-title">
       <div class="wrap booking-grid">
         <div class="booking-intro">
@@ -213,20 +275,6 @@
               <a href="mailto:djroccolive@gmail.com">
                 <span class="contact-label">Email</span>
                 <span class="contact-value">djroccolive@gmail.com</span>
-                <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
-              </a>
-            </li>
-            <li>
-              <a href="tel:+34645356592">
-                <span class="contact-label">Teléfono</span>
-                <span class="contact-value">+34 645 356 592</span>
-                <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
-              </a>
-            </li>
-            <li>
-              <a href="https://wa.me/34645356592" target="_blank" rel="noopener">
-                <span class="contact-label">WhatsApp</span>
-                <span class="contact-value">Enviar mensaje</span>
                 <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
               </a>
             </li>
@@ -299,8 +347,10 @@
       <img class="footer-logo" src="assets/logo.svg" alt="Rocco" width="1130" height="592" loading="lazy">
       <nav class="footer-links" aria-label="Redes">
         <a href="mailto:djroccolive@gmail.com">Email</a>
-        <a href="https://wa.me/34645356592" target="_blank" rel="noopener">WhatsApp</a>
         <a href="https://www.instagram.com/djroccolive/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://soundcloud.com/djroccolive" target="_blank" rel="noopener">SoundCloud</a>
+        <a href="https://www.youtube.com/@djroccolive" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://www.tiktok.com/@djroccolive" target="_blank" rel="noopener">TikTok</a>
         <a href="https://linktr.ee/djroccolive" target="_blank" rel="noopener">Linktree</a>
       </nav>
       <div class="footer-legal">

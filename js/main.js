@@ -118,6 +118,70 @@
     }
   })();
 
+  /* ---------- Vídeo de fondo del hero ---------- */
+
+  (function () {
+    var video = document.querySelector('.hero-video');
+    if (!video) return;
+    // Con "reducir movimiento" o ahorro de datos se queda la imagen fija.
+    var saveData = navigator.connection && navigator.connection.saveData;
+    if (reduceMotion || saveData) return;
+
+    var toggle = document.querySelector('.video-toggle');
+    var portrait = window.matchMedia('(orientation: portrait)');
+    var userPaused = false;
+    var inView = true;
+
+    video.muted = true;
+
+    function play() {
+      if (userPaused || !inView) return;
+      var p = video.play();
+      // Si el navegador no deja reproducir (p. ej. modo ahorro en iPhone), se queda la imagen.
+      if (p && p.catch) p.catch(function () {});
+    }
+
+    function pickSource() {
+      var src = portrait.matches ? video.dataset.srcPortrait : video.dataset.srcLandscape;
+      if (video.getAttribute('src') === src) return;
+      video.classList.remove('is-playing');
+      video.src = src;
+      play();
+    }
+
+    video.addEventListener('playing', function () {
+      video.classList.add('is-playing');
+      if (toggle) toggle.hidden = false;
+    });
+
+    if (toggle) {
+      toggle.addEventListener('click', function () {
+        userPaused = !userPaused;
+        if (userPaused) video.pause();
+        else play();
+        toggle.classList.toggle('is-paused', userPaused);
+        toggle.textContent = userPaused ? 'Reproducir vídeo' : 'Pausar vídeo';
+      });
+    }
+
+    function start() {
+      pickSource();
+      portrait.addEventListener('change', pickSource);
+      // Pausado mientras no se ve, para no gastar batería.
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          inView = entries[0].isIntersecting;
+          if (inView) play();
+          else video.pause();
+        }).observe(video);
+      }
+    }
+
+    // Empieza a cargar cuando ya está todo lo demás, para no alargar la pantalla de carga.
+    if (document.readyState === 'complete') start();
+    else window.addEventListener('load', start, { once: true });
+  })();
+
   /* ---------- Cabecera: fondo al hacer scroll ---------- */
 
   var header = document.querySelector('[data-header]');
