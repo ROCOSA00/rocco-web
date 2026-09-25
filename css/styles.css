@@ -280,7 +280,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .hero-video { opacity: 0; transition: opacity 1s var(--ease); }
 .hero-video.is-playing { opacity: 1; }
 @media (orientation: portrait) {
-  .hero-media, .hero-video { object-position: 40% 50%; }
+  .hero-media, .hero-video { object-position: 35% 50%; }
 }
 .hero::after {
   content: ""; position: absolute; inset: 0; z-index: -2;

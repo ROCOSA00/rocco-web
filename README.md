@@ -83,4 +83,4 @@ La clave queda cifrada en Supabase Vault. No la subas nunca a GitHub. Para cambi
 | Cambiar el color de acento | `css/styles.css` → `--amber` |
 | Cambiar una foto | Sustituye el `.webp` en `assets/img/` con el mismo nombre |
 | Alargar o acortar la pantalla de carga | `js/main.js` → `MIN_TIME` (milisegundos) |
-| Cambiar el vídeo de portada | Sustituye `assets/video/hero-landscape.mp4` (1280×720) y `hero-portrait.mp4` (608×1080, para móvil) por clips MP4 H.264 sin audio de unos 12 s y menos de 4 MB, y sus `.webp` por el primer fotograma de cada uno |
+| Cambiar el vídeo de portada | Sustituye `assets/video/hero-landscape.mp4` (1280×720) y `hero-portrait.mp4` (720×1000, para móvil) por clips MP4 H.264 sin audio de unos 12 s y menos de 4 MB, y sus `.webp` por el primer fotograma de cada uno |
