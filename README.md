@@ -27,7 +27,7 @@ supabase/booking_notifications.sql  Aviso por email de cada solicitud nueva
 3. **Bio**
 4. **Experiencia**: salas (Cocoa, Titus, Classic, Sala Duvet, Malalts de Festa, Particular, Sakova, Sala Privat) y eventos (El Jaleo, Attic, Hotel W, Zeta Dance Club).
 5. **Banda de foto** (Classic Mataró).
-6. **Música**: reproductor de SoundCloud con la pista destacada (*Se Nota (Original Mix)*) y enlaces a SoundCloud, YouTube y TikTok.
+6. **Música**: reproductor de SoundCloud con la pista destacada (*Se Nota (Rocco Original Mix)*) y enlaces a SoundCloud, YouTube y TikTok.
 7. **Booking**: formulario + email, Instagram y Linktree.
 
 ## Verla en local
