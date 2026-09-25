@@ -16,6 +16,7 @@ assets/img/                 Fotos optimizadas en WebP (2 tamaños cada una)
 assets/og-image.jpg         Imagen al compartir el enlace (WhatsApp, Instagram…)
 assets/favicon-32.png       Icono de pestaña (los destellos del logo)
 supabase/booking_requests.sql  Tabla para guardar solicitudes de booking
+supabase/booking_notifications.sql  Aviso por email de cada solicitud nueva
 ```
 
 ## Secciones
@@ -54,6 +55,19 @@ El formulario guarda cada solicitud en la tabla `booking_requests` de Supabase. 
 La web solo puede **insertar** solicitudes (no leerlas ni borrarlas). Eso lo garantizan las políticas RLS del SQL. Por eso la *publishable key* puede estar en `js/config.js`. **No pongas nunca en el repo la contraseña de la base de datos ni la *secret key*.**
 
 Si Supabase no responde, el formulario muestra un mensaje con el email y el Instagram para que nadie se quede sin poder contactar.
+
+### Aviso por email
+
+Cada solicitud nueva llega también por email a djroccolive@gmail.com. Lo envía Supabase a través de [Resend](https://resend.com) (gratis hasta 100 emails al día). Si el cliente dejó un email, basta con darle a *Responder*; si dejó un teléfono, el email trae botones para llamar y para WhatsApp.
+
+Para activarlo, **una sola vez**:
+
+1. Crea una cuenta en [resend.com](https://resend.com) con **djroccolive@gmail.com**. Sin dominio propio, Resend solo deja enviar al email de la cuenta.
+2. En Resend → **API Keys** → *Create API Key* (permiso *Sending access*) y copia la clave (empieza por `re_`).
+3. En Supabase → **SQL Editor** → *New query*, pega el contenido de `supabase/booking_notifications.sql`.
+4. Sustituye `PEGA_AQUI_TU_API_KEY_DE_RESEND` por tu clave y pulsa **Run**.
+
+La clave queda cifrada en Supabase Vault. No la subas nunca a GitHub. Para cambiarla, repite los pasos 3 y 4 con la clave nueva. Si un email falla, la solicitud se guarda igualmente en la tabla.
 
 ## Cambios habituales
 
