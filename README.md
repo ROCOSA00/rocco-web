@@ -10,7 +10,7 @@ Es HTML, CSS y JavaScript sin dependencias ni paso de compilación: se puede pub
 index.html                  Contenido de la web (textos, salas, eventos)
 css/styles.css              Estilos (colores y tipografías arriba del todo, en :root)
 js/config.js                Conexión del formulario con Supabase
-js/main.js                  Menú móvil, cabecera y formulario de booking
+js/main.js                  Pantalla de carga, menú móvil, cabecera y formulario
 assets/logo.svg             Logo (recortado al contenido)
 assets/img/                 Fotos optimizadas en WebP (2 tamaños cada una)
 assets/og-image.jpg         Imagen al compartir el enlace (WhatsApp, Instagram…)
@@ -20,6 +20,7 @@ supabase/booking_requests.sql  Tabla para guardar solicitudes de booking
 
 ## Secciones
 
+0. **Pantalla de carga**: el logo late a 124 BPM sobre una barra de progreso; al terminar, el fondo se desvanece y el logo vuela a su sitio en la portada.
 1. **Inicio**: foto en cabina, logo, estilos y botones de Booking e Instagram.
 2. **Cinta de estilos**: reggaetón, urbano, hits comerciales, afro, house y pachanga.
 3. **Bio**
@@ -40,7 +41,7 @@ python3 -m http.server 8000
 
 **Opción B: GitHub Pages.** En el repo, *Settings → Pages → Build and deployment*: *Deploy from a branch*, rama `main`, carpeta `/ (root)`. Quedará en `https://rocosa00.github.io/rocco-web/`.
 
-Cuando tengas el dominio definitivo, cambia en `index.html` la etiqueta `og:image` por la URL completa (por ejemplo `https://tudominio.com/assets/og-image.jpg`) para que la vista previa al compartir funcione en todas las apps.
+La web está publicada en **https://rocco-web-five.vercel.app**. Si conectas un dominio propio, cambia esa dirección en `index.html` (etiquetas `canonical`, `og:url`, `og:image` y `twitter:image`) para que la vista previa al compartir apunte al dominio nuevo.
 
 ## Formulario de booking (Supabase)
 
@@ -64,3 +65,4 @@ Si Supabase no responde, el formulario muestra un mensaje con el email y el Inst
 | Cambiar la bio | `index.html` → sección `id="bio"` |
 | Cambiar el color de acento | `css/styles.css` → `--amber` |
 | Cambiar una foto | Sustituye el `.webp` en `assets/img/` con el mismo nombre |
+| Alargar o acortar la pantalla de carga | `js/main.js` → `MIN_TIME` (milisegundos) |

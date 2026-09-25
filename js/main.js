@@ -2,6 +2,121 @@
   'use strict';
 
   var cfg = window.ROCCO_CONFIG || {};
+  var root = document.documentElement;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Pantalla de carga ---------- */
+
+  (function () {
+    var loader = document.querySelector('[data-loader]');
+    if (!loader) return;
+    if (!root.classList.contains('is-loading')) {
+      loader.remove();
+      return;
+    }
+
+    var fill = loader.querySelector('[data-loader-fill]');
+    var pct = loader.querySelector('[data-loader-pct]');
+    var loaderLogo = loader.querySelector('.loader-logo');
+    var heroLogo = document.querySelector('.hero-logo');
+
+    // Tiempo mínimo en pantalla: más corto si ya se ha visto en esta visita.
+    var seen = false;
+    try {
+      seen = sessionStorage.getItem('rocco-loader') === '1';
+      sessionStorage.setItem('rocco-loader', '1');
+    } catch (e) { /* sin almacenamiento: se usa el tiempo normal */ }
+    var MIN_TIME = reduceMotion ? 400 : seen ? 900 : 1800;
+    // Límite desde que empezó a cargar la página, pase lo que pase con la red.
+    var MAX_TIME = 7500;
+
+    function whenLoaded(img) {
+      if (!img) return Promise.resolve();
+      return new Promise(function (resolve) {
+        if (img.complete) return resolve();
+        img.addEventListener('load', resolve, { once: true });
+        img.addEventListener('error', resolve, { once: true });
+      }).then(function () {
+        return img.decode ? img.decode().catch(function () {}) : null;
+      });
+    }
+
+    var tasks = [
+      document.fonts ? document.fonts.ready : Promise.resolve(),
+      whenLoaded(document.querySelector('.hero-media')),
+      whenLoaded(loaderLogo),
+      new Promise(function (resolve) {
+        if (document.readyState === 'complete') resolve();
+        else window.addEventListener('load', resolve, { once: true });
+      }),
+    ];
+    var done = 0;
+    var allDone = false;
+    tasks.forEach(function (task) { task.then(function () { done++; }); });
+    Promise.all(tasks).then(function () { allDone = true; });
+
+    var start = performance.now();
+    var shown = 0;
+
+    function frame(now) {
+      if (!root.classList.contains('is-loading')) {
+        loader.remove();
+        return;
+      }
+      var t = now - start;
+      var paced = Math.min(1, t / MIN_TIME);
+      // La barra sigue lo que ya ha cargado, sin correr más que el tiempo mínimo
+      // y avanzando poco a poco aunque la red vaya lenta.
+      var target = Math.max(0.8 * (1 - Math.exp(-t / 1000)), Math.min(done / tasks.length, paced));
+      if ((allDone && paced === 1) || now >= MAX_TIME) target = 1;
+
+      shown += (target - shown) * 0.12;
+      if (target === 1 && shown > 0.995) shown = 1;
+
+      fill.style.transform = 'scaleX(' + shown.toFixed(4) + ')';
+      pct.textContent = Math.round(shown * 100) + '%';
+
+      if (shown < 1) requestAnimationFrame(frame);
+      else setTimeout(leave, 200);
+    }
+    requestAnimationFrame(frame);
+
+    function finish() {
+      if (!loader.isConnected) return;
+      if (heroLogo) heroLogo.style.visibility = '';
+      root.classList.remove('is-loading', 'is-revealing');
+      loader.remove();
+    }
+
+    // Se desvanece el fondo y el logo vuela hasta su sitio en la portada.
+    function leave() {
+      if (!root.classList.contains('is-loading')) return finish();
+      root.classList.add('is-revealing');
+      loader.classList.add('is-leaving');
+
+      var to = heroLogo && heroLogo.getBoundingClientRect();
+      var canFly = !reduceMotion && to && to.width > 0 && to.bottom > 0 && to.top < window.innerHeight;
+
+      if (!canFly) {
+        loader.style.transition = 'opacity .6s';
+        loader.style.opacity = '0';
+        setTimeout(finish, reduceMotion ? 50 : 650);
+        return;
+      }
+
+      loaderLogo.style.animation = 'none';
+      var from = loaderLogo.getBoundingClientRect();
+      heroLogo.style.visibility = 'hidden';
+      loaderLogo.style.transformOrigin = '0 0';
+      loaderLogo.style.transition = 'transform .95s cubic-bezier(.7, 0, .2, 1)';
+      loaderLogo.getBoundingClientRect();
+      loaderLogo.style.transform =
+        'translate(' + (to.left - from.left) + 'px, ' + (to.top - from.top) + 'px) ' +
+        'scale(' + (to.width / from.width) + ')';
+      loaderLogo.addEventListener('transitionend', finish, { once: true });
+      setTimeout(finish, 1400);
+    }
+  })();
 
   /* ---------- Cabecera: fondo al hacer scroll ---------- */
 
