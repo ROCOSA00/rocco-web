@@ -26,7 +26,7 @@ supabase/booking_notifications.sql  Aviso por email de cada solicitud nueva
 1. **Inicio**: vídeo en bucle de fondo (sin sonido, con botón para pausarlo), logo, estilos y botones de Booking e Instagram.
 2. **Cinta de estilos**: reggaetón, urbano, hits comerciales, afro, house y pachanga.
 3. **Bio**
-4. **Experiencia**: salas (Cocoa, Titus, Classic, Sala Duvet, Malalts de Festa, Particular, Sakova, Sala Privat) y eventos (El Jaleo, Attic, Hotel W, Zeta Dance Club).
+4. **Experiencia**: salas (Cocoa, Titus, Classic, Malalts de Festa, Particular, Sakova, Sala Privat) y eventos (El Jaleo, Attic, Hotel W, Zeta Dance Club).
 5. **Banda de foto** (Classic Mataró).
 6. **Música**: reproductor de SoundCloud con la pista destacada (*Se Nota (Rocco Original Mix)*) y enlaces a SoundCloud, YouTube y TikTok.
 7. **Booking**: formulario + email, Instagram y Linktree.
