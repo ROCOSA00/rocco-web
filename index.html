@@ -74,6 +74,7 @@
 
   <svg width="0" height="0" class="sprite" aria-hidden="true" focusable="false">
     <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   </svg>
 
@@ -83,6 +84,7 @@
     </a>
     <nav class="nav" id="menu" aria-label="Principal">
       <a href="#bio">Bio</a>
+      <a href="#fechas">Fechas</a>
       <a href="#experiencia">Experiencia</a>
       <a href="#musica">Música</a>
       <a href="#booking" class="nav-cta">Booking</a>
@@ -171,21 +173,191 @@
       </div>
     </section>
 
+    <section class="section gigs" id="fechas" aria-labelledby="gigs-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow"><span class="spark" aria-hidden="true"></span>Próximas fechas</p>
+          <h2 id="gigs-title" class="h-display">Dónde pincho</h2>
+        </div>
+
+        <ol class="gig-list" data-gigs hidden></ol>
+
+        <div class="gigs-empty" data-gigs-empty>
+          <p class="lede">Nuevas fechas muy pronto. Las anuncio primero en Instagram.</p>
+          <div class="gigs-empty-actions">
+            <a class="btn btn-ghost" href="https://www.instagram.com/djroccolive/" target="_blank" rel="noopener">
+              <svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg>@djroccolive
+            </a>
+            <a class="btn btn-primary" href="#booking">Llévame a tu sala</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section exp" id="experiencia" aria-labelledby="exp-title">
       <div class="wrap">
         <div class="section-head">
           <p class="eyebrow"><span class="spark" aria-hidden="true"></span>Experiencia</p>
           <h2 id="exp-title" class="h-display">Cabinas</h2>
+          <p class="section-hint">Pulsa en una sala para saber más</p>
         </div>
 
         <ul class="venues">
-          <li class="venue"><span class="venue-name">Cocoa</span><span class="venue-city">Mataró</span></li>
-          <li class="venue"><span class="venue-name">Titus</span><span class="venue-city">Badalona</span></li>
-          <li class="venue"><span class="venue-name">Classic</span><span class="venue-city">Mataró</span></li>
-          <li class="venue"><span class="venue-name">Malalts de Festa</span><span class="venue-city"></span></li>
-          <li class="venue"><span class="venue-name">Particular</span><span class="venue-city">Mataró</span></li>
-          <li class="venue"><span class="venue-name">Sakova</span><span class="venue-city">Menorca</span></li>
-          <li class="venue"><span class="venue-name">Sala Privat</span><span class="venue-city">Mataró</span></li>
+          <li>
+            <details class="venue" name="venue">
+              <summary class="venue-summary">
+                <span class="venue-name">Cocoa</span>
+                <span class="venue-city">Mataró</span>
+                <span class="venue-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="venue-panel">
+                <p class="venue-desc">Una de las discotecas de referencia de Mataró, junto al mar. Pista grande y noches que van de los ritmos latinos a la electrónica y los éxitos del momento.</p>
+                <div class="venue-side">
+                  <dl class="venue-meta">
+                    <div><dt>Tipo</dt><dd>Discoteca</dd></div>
+                    <div><dt>Dónde</dt><dd>Mataró, Maresme</dd></div>
+                  </dl>
+                  <div class="venue-links">
+                    <a href="https://www.instagram.com/discotecacocoa/" target="_blank" rel="noopener">Instagram de la sala <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Discoteca+Cocoa+Matar%C3%B3" target="_blank" rel="noopener">Cómo llegar <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="venue" name="venue">
+              <summary class="venue-summary">
+                <span class="venue-name">Titus</span>
+                <span class="venue-city">Badalona</span>
+                <span class="venue-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="venue-panel">
+                <p class="venue-desc">La carpa de Badalona: discoteca al aire libre con dos ambientes, uno de pachanga y dance y otro de house comercial y remember, y una terraza con palmeras.</p>
+                <div class="venue-side">
+                  <dl class="venue-meta">
+                    <div><dt>Tipo</dt><dd>Discoteca al aire libre</dd></div>
+                    <div><dt>Dónde</dt><dd>Badalona, Barcelonès</dd></div>
+                  </dl>
+                  <div class="venue-links">
+                    <a href="https://www.instagram.com/carpa_titus/" target="_blank" rel="noopener">Instagram de la sala <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Titus+Carpa+Badalona" target="_blank" rel="noopener">Cómo llegar <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="venue" name="venue">
+              <summary class="venue-summary">
+                <span class="venue-name">Classic</span>
+                <span class="venue-city">Mataró</span>
+                <span class="venue-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="venue-panel">
+                <p class="venue-desc">Discoteca clásica del centro de Mataró, con terraza al aire libre con vistas al Mediterráneo. Aquí se celebra Classic x Jaleo, la noche del vídeo de portada.</p>
+                <div class="venue-side">
+                  <figure class="venue-media">
+                    <img src="assets/img/rocco-classic-900.webp" alt="Rocco pinchando en Classic Mataró entre estelas de luz" width="900" height="600" loading="lazy">
+                  </figure>
+                  <dl class="venue-meta">
+                    <div><dt>Tipo</dt><dd>Discoteca</dd></div>
+                    <div><dt>Dónde</dt><dd>Centro de Mataró</dd></div>
+                  </dl>
+                  <div class="venue-links">
+                    <a href="https://www.instagram.com/classicmataro/" target="_blank" rel="noopener">Instagram de la sala <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Classic+Matar%C3%B3" target="_blank" rel="noopener">Cómo llegar <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="venue" name="venue">
+              <summary class="venue-summary">
+                <span class="venue-name">Malalts de Festa</span>
+                <span class="venue-city">Cornellà</span>
+                <span class="venue-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="venue-panel">
+                <p class="venue-desc">Uno de los clubs más conocidos de Catalunya, en Cornellà de Llobregat, con sesiones +18, +16 y tardeo los sábados.</p>
+                <div class="venue-side">
+                  <dl class="venue-meta">
+                    <div><dt>Tipo</dt><dd>Discoteca</dd></div>
+                    <div><dt>Dónde</dt><dd>Cornellà de Llobregat</dd></div>
+                  </dl>
+                  <div class="venue-links">
+                    <a href="https://www.instagram.com/malaltsdefesta/" target="_blank" rel="noopener">Instagram de la sala <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Malalts+de+Festa+Cornell%C3%A0+de+Llobregat" target="_blank" rel="noopener">Cómo llegar <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="venue" name="venue">
+              <summary class="venue-summary">
+                <span class="venue-name">Particular</span>
+                <span class="venue-city">Mataró</span>
+                <span class="venue-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="venue-panel">
+                <p class="venue-desc">Una antigua masía convertida en discoteca: varias salas con ambientes distintos y una gran terraza exterior rodeada de vegetación.</p>
+                <div class="venue-side">
+                  <dl class="venue-meta">
+                    <div><dt>Tipo</dt><dd>Discoteca</dd></div>
+                    <div><dt>Dónde</dt><dd>Mataró, Maresme</dd></div>
+                  </dl>
+                  <div class="venue-links">
+                    <a href="https://www.instagram.com/particularmataro/" target="_blank" rel="noopener">Instagram de la sala <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Particular+Matar%C3%B3" target="_blank" rel="noopener">Cómo llegar <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="venue" name="venue">
+              <summary class="venue-summary">
+                <span class="venue-name">Sakova</span>
+                <span class="venue-city">Menorca</span>
+                <span class="venue-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="venue-panel">
+                <p class="venue-desc">En el puerto de Ciutadella, dentro de una cueva natural. Una de las salas con más carácter de Menorca.</p>
+                <div class="venue-side">
+                  <dl class="venue-meta">
+                    <div><dt>Tipo</dt><dd>Discoteca</dd></div>
+                    <div><dt>Dónde</dt><dd>Puerto de Ciutadella, Menorca</dd></div>
+                  </dl>
+                  <div class="venue-links">
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Discoteca+Sakova+Ciutadella+de+Menorca" target="_blank" rel="noopener">Cómo llegar <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </li>
+          <li>
+            <details class="venue" name="venue">
+              <summary class="venue-summary">
+                <span class="venue-name">Sala Privat</span>
+                <span class="venue-city">Mataró</span>
+                <span class="venue-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="venue-panel">
+                <p class="venue-desc">Sala de conciertos y discoteca en Mataró, con buen sonido, buena iluminación y zonas VIP. Un clásico de la noche del Maresme.</p>
+                <div class="venue-side">
+                  <dl class="venue-meta">
+                    <div><dt>Tipo</dt><dd>Sala de conciertos y discoteca</dd></div>
+                    <div><dt>Dónde</dt><dd>Mataró, Maresme</dd></div>
+                  </dl>
+                  <div class="venue-links">
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Sala+Privat+Matar%C3%B3" target="_blank" rel="noopener">Cómo llegar <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </li>
         </ul>
 
         <div class="events">
@@ -292,6 +464,10 @@
               </a>
             </li>
           </ul>
+
+          <a class="btn btn-ghost presskit-btn" href="assets/rocco-presskit.pdf" download="DJ-Rocco-press-kit.pdf">
+            <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Descargar press kit (PDF)
+          </a>
         </div>
 
         <form class="booking-form" id="booking-form" novalidate>
@@ -351,6 +527,7 @@
         <a href="https://www.youtube.com/@djroccolive" target="_blank" rel="noopener">YouTube</a>
         <a href="https://www.tiktok.com/@djroccolive" target="_blank" rel="noopener">TikTok</a>
         <a href="https://linktr.ee/djroccolive" target="_blank" rel="noopener">Linktree</a>
+        <a href="assets/rocco-presskit.pdf" download="DJ-Rocco-press-kit.pdf">Press kit</a>
       </nav>
       <div class="footer-legal">
         <p>© <span data-year>2026</span> DJ Rocco</p>

@@ -229,6 +229,77 @@
   var year = document.querySelector('[data-year]');
   if (year) year.textContent = String(new Date().getFullYear());
 
+  /* ---------- Próximas fechas ← Supabase ---------- */
+
+  (function () {
+    var list = document.querySelector('[data-gigs]');
+    var empty = document.querySelector('[data-gigs-empty]');
+    if (!list || !empty || !cfg.supabaseUrl || !cfg.supabaseKey) return;
+
+    // Hoy en hora de Madrid (AAAA-MM-DD); los bolos de días anteriores no se piden.
+    var parts = {};
+    new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Madrid', year: 'numeric', month: '2-digit', day: '2-digit' })
+      .formatToParts(new Date())
+      .forEach(function (p) { parts[p.type] = p.value; });
+    var today = parts.year + '-' + parts.month + '-' + parts.day;
+
+    var url = cfg.supabaseUrl.replace(/\/$/, '') + '/rest/v1/' + (cfg.gigsTable || 'gigs') +
+      '?select=date,venue,city,event,tickets_url&date=gte.' + today + '&order=date.asc&limit=12';
+
+    var dow = new Intl.DateTimeFormat('es-ES', { weekday: 'short', timeZone: 'UTC' });
+    var mon = new Intl.DateTimeFormat('es-ES', { month: 'short', timeZone: 'UTC' });
+
+    function el(tag, className, text) {
+      var node = document.createElement(tag);
+      if (className) node.className = className;
+      if (text) node.textContent = text;
+      return node;
+    }
+
+    function renderGig(gig) {
+      var ymd = String(gig.date).split('-').map(Number);
+      var date = new Date(Date.UTC(ymd[0], ymd[1] - 1, ymd[2]));
+      var li = el('li', 'gig');
+
+      var time = el('time', 'gig-date');
+      time.dateTime = gig.date;
+      time.appendChild(el('span', 'gig-day', String(ymd[2]).padStart(2, '0')));
+      time.appendChild(el('span', 'gig-dow', dow.format(date).replace('.', '')));
+      time.appendChild(el('span', 'gig-mon', mon.format(date).replace('.', '')));
+      li.appendChild(time);
+
+      var info = el('div', 'gig-info');
+      info.appendChild(el('span', 'gig-venue', gig.venue));
+      if (gig.event) info.appendChild(el('span', 'gig-event', gig.event));
+      li.appendChild(info);
+
+      li.appendChild(el('span', 'gig-city', gig.city || ''));
+
+      if (gig.tickets_url && /^https?:\/\//i.test(gig.tickets_url)) {
+        var a = el('a', 'btn btn-ghost gig-tickets', 'Entradas');
+        a.href = gig.tickets_url;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        li.appendChild(a);
+      }
+      return li;
+    }
+
+    fetch(url, { headers: { apikey: cfg.supabaseKey } })
+      .then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      })
+      .then(function (gigs) {
+        if (!Array.isArray(gigs) || !gigs.length) return;
+        gigs.forEach(function (gig) { list.appendChild(renderGig(gig)); });
+        list.hidden = false;
+        empty.hidden = true;
+      })
+      // Sin conexión o sin tabla: se queda el mensaje de "nuevas fechas muy pronto".
+      .catch(function () {});
+  })();
+
   /* ---------- Formulario de booking → Supabase ---------- */
 
   var form = document.getElementById('booking-form');

@@ -15,9 +15,12 @@ assets/logo.svg             Logo (recortado al contenido)
 assets/img/                 Fotos optimizadas en WebP (2 tamaños cada una)
 assets/video/               Vídeo de portada (horizontal y vertical) y su primer fotograma
 assets/og-image.jpg         Imagen al compartir el enlace (WhatsApp, Instagram…)
+assets/rocco-presskit.pdf   Press kit que se descarga desde Booking y el pie
+presskit/                   Maqueta del press kit (HTML + fotos) para regenerar el PDF
 assets/favicon-32.png       Icono de pestaña (los destellos del logo)
 supabase/booking_requests.sql  Tabla para guardar solicitudes de booking
 supabase/booking_notifications.sql  Aviso por email de cada solicitud nueva
+supabase/gigs.sql           Tabla de próximas fechas
 ```
 
 ## Secciones
@@ -26,10 +29,11 @@ supabase/booking_notifications.sql  Aviso por email de cada solicitud nueva
 1. **Inicio**: vídeo en bucle de fondo (sin sonido, con botón para pausarlo), logo, estilos y botones de Booking e Instagram.
 2. **Cinta de estilos**: reggaetón, urbano, hits comerciales, afro, house y pachanga.
 3. **Bio**
-4. **Experiencia**: salas (Cocoa, Titus, Classic, Malalts de Festa, Particular, Sakova, Sala Privat) y eventos (El Jaleo, Attic, Hotel W, Zeta Dance Club).
-5. **Banda de foto** (Classic Mataró).
-6. **Música**: reproductor de SoundCloud con la pista destacada (*Se Nota (Rocco Original Mix)*) y enlaces a SoundCloud, YouTube y TikTok.
-7. **Booking**: formulario + email, Instagram y Linktree.
+4. **Próximas fechas**: tus bolos, leídos de Supabase. Las fechas pasadas desaparecen solas; si no hay ninguna, sale un aviso con enlace a Instagram y a Booking.
+5. **Experiencia**: salas (Cocoa, Titus, Classic, Malalts de Festa, Particular, Sakova, Sala Privat) que se despliegan al pulsarlas con una descripción, tipo de local, ubicación, Instagram de la sala y "Cómo llegar"; y eventos (El Jaleo, Attic, Hotel W, Zeta Dance Club).
+6. **Banda de foto** (Classic Mataró).
+7. **Música**: reproductor de SoundCloud con la pista destacada (*Se Nota (Rocco Original Mix)*) y enlaces a SoundCloud, YouTube y TikTok.
+8. **Booking**: formulario + email, Instagram, Linktree y botón para descargar el press kit.
 
 ## Verla en local
 
@@ -71,13 +75,24 @@ Para activarlo, **una sola vez**:
 
 La clave queda cifrada en Supabase Vault. No la subas nunca a GitHub. Para cambiarla, repite los pasos 3 y 4 con la clave nueva. Si un email falla, la solicitud se guarda igualmente en la tabla.
 
+## Próximas fechas (Supabase)
+
+Para activarlas, **una sola vez**: Supabase → **SQL Editor** → *New query* → pega `supabase/gigs.sql` → **Run**.
+
+Para añadir un bolo: **Table Editor → gigs → Insert row** y rellena `date` (el día en que empieza la noche), `venue` y `city`. `event` (nombre de la fiesta) y `tickets_url` (enlace a entradas, con `https://`) son opcionales. Para ocultar un bolo sin borrarlo, desmarca `published`. La web muestra hasta 12 fechas, de la más próxima a la más lejana.
+
+## Press kit
+
+El PDF es `assets/rocco-presskit.pdf`. Para cambiarlo, edita `presskit/presskit.html` (textos, rider, fotos en `presskit/img/`), ábrelo en Chrome desde la web local (`python3 -m http.server` y `http://localhost:8000/presskit/presskit.html`) → **Imprimir → Guardar como PDF**, tamaño A4, márgenes *Ninguno* y *Gráficos de fondo* activado, y guárdalo encima de `assets/rocco-presskit.pdf`.
+
 ## Cambios habituales
 
 | Quiero… | Dónde |
 | --- | --- |
 | Cambiar el email o las redes | `index.html` → listas `<ul class="contact-links">` (Música y Booking) y pie (`footer-links`) |
 | Cambiar la pista destacada | `index.html` → sección `id="musica"`: el título en `player-title` y la URL de la pista en el `src` del `<iframe>` y en `player-link` |
-| Añadir o quitar una sala | `index.html` → lista `<ul class="venues">` |
+| Añadir o quitar una sala, o cambiar su descripción | `index.html` → lista `<ul class="venues">`: cada sala es un `<details>` con su nombre, ciudad, descripción, tipo, ubicación y enlaces |
+| Añadir un bolo | Supabase → Table Editor → `gigs` → Insert row |
 | Añadir un evento | `index.html` → lista `<ul class="event-list">` |
 | Cambiar la bio | `index.html` → sección `id="bio"` |
 | Cambiar el color de acento | `css/styles.css` → `--amber` |

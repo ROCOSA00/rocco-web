@@ -1,5 +1,5 @@
 /*
- * Configuración del formulario de booking (conexión con Supabase).
+ * Conexión con Supabase: formulario de booking y próximas fechas.
  * Los datos de contacto visibles están en index.html, sección Booking.
  *
  * La "publishable key" de Supabase está pensada para ir en el navegador:
@@ -11,6 +11,7 @@ window.ROCCO_CONFIG = {
   supabaseUrl: 'https://rrnatexjlwsdocmkkqoz.supabase.co',
   supabaseKey: 'sb_publishable_oEmNtIk2jhdxVehHDS-Mbg_tkzWpA7T',
   bookingTable: 'booking_requests',
+  gigsTable: 'gigs',
 
   // Se muestran si el formulario no consigue enviar la solicitud.
   email: 'djroccolive@gmail.com',
