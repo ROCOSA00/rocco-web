@@ -30,7 +30,7 @@ supabase/gigs.sql           Tabla de próximas fechas
 2. **Cinta de estilos**: reggaetón, urbano, hits comerciales, afro, house y pachanga.
 3. **Bio**
 4. **Próximas fechas**: tus bolos, leídos de Supabase. Las fechas pasadas desaparecen solas; si no hay ninguna, sale un aviso con enlace a Instagram y a Booking.
-5. **Experiencia**: salas (Cocoa, Titus, Classic, Malalts de Festa, Particular, Sakova, Sala Privat) que se despliegan al pulsarlas con su ubicación (enlace a Google Maps), sus redes y, si la hay, una foto tuya allí; y eventos (El Jaleo, Attic, Hotel W, Zeta Dance Club).
+5. **Experiencia**: salas (Cocoa, Titus, Classic, Malalts de Festa, Particular, El Jaleo Events, Sala Privat) que se despliegan al pulsarlas con su ubicación (enlace a Google Maps), sus redes y, si la hay, una foto tuya allí; y "Otros" (Sakova, Dejavu, Attic Electronic, Sala Duvet, Twenties, Hotel W, Zeta Dance Club).
 6. **Banda de foto** (Classic Mataró).
 7. **Música**: reproductor de SoundCloud con la pista destacada (*Se Nota (Rocco Original Mix)*) y enlaces a SoundCloud, YouTube y TikTok.
 8. **Booking**: formulario + email, Instagram, Linktree y botón para descargar el press kit.
@@ -83,7 +83,7 @@ Para añadir un bolo: **Table Editor → gigs → Insert row** y rellena `date` 
 
 ## Press kit
 
-El PDF es `assets/rocco-presskit.pdf`. Para cambiarlo, edita `presskit/presskit.html` (textos, rider, fotos en `presskit/img/`), ábrelo en Chrome desde la web local (`python3 -m http.server` y `http://localhost:8000/presskit/presskit.html`) → **Imprimir → Guardar como PDF**, tamaño A4, márgenes *Ninguno* y *Gráficos de fondo* activado, y guárdalo encima de `assets/rocco-presskit.pdf`.
+El PDF es `assets/rocco-presskit.pdf`. Para cambiarlo, edita `presskit/presskit.html` (textos, rider, fotos en `presskit/img/`; las tipografías van incluidas en `presskit/fonts/`), ábrelo en Chrome desde la web local (`python3 -m http.server` y `http://localhost:8000/presskit/presskit.html`) → **Imprimir → Guardar como PDF**, tamaño A4, márgenes *Ninguno* y *Gráficos de fondo* activado, y guárdalo encima de `assets/rocco-presskit.pdf`.
 
 ## Cambios habituales
 
@@ -93,7 +93,7 @@ El PDF es `assets/rocco-presskit.pdf`. Para cambiarlo, edita `presskit/presskit.
 | Cambiar la pista destacada | `index.html` → sección `id="musica"`: el título en `player-title` y la URL de la pista en el `src` del `<iframe>` y en `player-link` |
 | Añadir o quitar una sala, o ponerle foto | `index.html` → lista `<ul class="venues">`: cada sala es un `<details>` con su nombre, ciudad, ubicación, red social y, opcionalmente, un `<figure class="venue-media">` con la foto (y la clase `has-media` en `venue-panel`) |
 | Añadir un bolo | Supabase → Table Editor → `gigs` → Insert row |
-| Añadir un evento | `index.html` → lista `<ul class="event-list">` |
+| Añadir un sitio a "Otros" | `index.html` → lista `<ul class="event-list">` |
 | Cambiar la bio | `index.html` → sección `id="bio"` |
 | Cambiar el color de acento | `css/styles.css` → `--amber` |
 | Cambiar una foto | Sustituye el `.webp` en `assets/img/` con el mismo nombre |
