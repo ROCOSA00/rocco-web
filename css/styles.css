@@ -209,7 +209,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .site-header.is-scrolled::before { opacity: 1; }
 
-.brand { position: relative; z-index: 2; display: block; }
+.brand { position: relative; z-index: 2; display: block; margin-right: auto; }
 .brand img { height: 42px; width: auto; }
 
 .nav {
@@ -261,6 +261,40 @@ ul { margin: 0; padding: 0; list-style: none; }
   .site-header[data-open] .nav { opacity: 1; visibility: visible; transition: opacity .3s; }
   .site-header[data-open]::before { opacity: 0; }
 }
+
+/* ---------- Iconos de redes ---------- */
+
+.social-icons {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 2px;
+  margin: 0; padding: 0; list-style: none;
+}
+.social-icons a {
+  display: grid; place-items: center;
+  width: 40px; height: 40px;
+  border-radius: 999px;
+  color: var(--paper);
+  transition: color .2s, background-color .2s, transform .25s var(--ease);
+}
+.social-icons a:hover { color: var(--ink); background: var(--amber); transform: translateY(-2px); }
+.social-icons svg { width: 18px; height: 18px; }
+
+.header-socials { position: relative; z-index: 2; margin-right: -8px; }
+.nav-socials, .hero-socials { display: none; }
+
+@media (max-width: 999px) {
+  .header-socials { display: none; }
+  .hero-socials { display: flex; margin-left: -10px; }
+}
+@media (max-width: 760px) {
+  .nav .nav-socials { display: flex; margin: 28px 0 0 -12px; }
+  .nav-socials a { width: 48px; height: 48px; }
+  .nav-socials svg { width: 22px; height: 22px; }
+}
+
+.footer-socials a { width: 44px; height: 44px; }
+.footer-socials svg { width: 20px; height: 20px; }
+
+.label-icon { width: 15px; height: 15px; flex: none; color: var(--paper); transition: color .2s; }
 
 /* ---------- Hero ---------- */
 
@@ -609,6 +643,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .venue-where .icon { color: var(--amber); }
 .venue-social-net {
+  display: inline-flex; align-items: center; gap: 8px;
   font: 500 .6875rem/1 var(--f-mono); letter-spacing: .16em; text-transform: uppercase;
   color: var(--muted);
 }
@@ -693,7 +728,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .music-head { grid-area: head; display: grid; gap: 28px; }
 .music-links { grid-area: links; }
-.music-player { grid-area: player; }
+.music-stack { grid-area: player; display: grid; gap: 18px; }
 
 .music-player {
   display: grid; gap: 18px;
@@ -718,6 +753,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   border: 0; border-radius: 4px;
   background: var(--ink);
 }
+.player-frame--spotify { height: 352px; border-radius: 12px; }
 .player-link {
   justify-self: start;
   display: inline-flex; align-items: center; gap: .5em;
@@ -735,6 +771,7 @@ ul { margin: 0; padding: 0; list-style: none; }
     grid-template-rows: auto;
   }
   .player-frame { height: 260px; }
+  .player-frame--spotify { height: 352px; }
 }
 
 /* ---------- Booking ---------- */
@@ -750,16 +787,18 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .contact-links { border-top: 1px solid var(--line); margin-top: 8px; }
 .contact-links a {
-  display: grid; grid-template-columns: 8.5rem minmax(0, 1fr) auto; align-items: center;
+  display: grid; grid-template-columns: 9.5rem minmax(0, 1fr) auto; align-items: center;
   gap: 16px;
   padding-block: 18px;
   border-bottom: 1px solid var(--line);
   text-decoration: none;
 }
 .contact-label {
+  display: inline-flex; align-items: center; gap: 10px;
   font: 500 .75rem/1 var(--f-mono); letter-spacing: .16em; text-transform: uppercase;
   color: var(--muted);
 }
+.contact-links a:hover .label-icon { color: var(--amber); }
 .contact-value { font-weight: 500; overflow-wrap: anywhere; transition: color .2s; }
 .contact-links .icon { color: var(--muted); transition: transform .3s var(--ease), color .2s; }
 .contact-links a:hover .contact-value,
@@ -820,7 +859,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 @media (max-width: 480px) {
   .field-row { grid-template-columns: minmax(0, 1fr); }
-  .contact-links a { grid-template-columns: 6.5rem minmax(0, 1fr) auto; }
+  .contact-links a { grid-template-columns: 8rem minmax(0, 1fr) auto; }
   .fact { grid-template-columns: 6.5rem minmax(0, 1fr); }
   .form-foot .btn { width: 100%; }
 }
@@ -834,7 +873,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .footer-logo { width: clamp(180px, 30vw, 380px); }
 .footer-links {
-  display: flex; flex-wrap: wrap; gap: 12px 28px;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px;
   font: 500 .75rem/1 var(--f-mono); letter-spacing: .16em; text-transform: uppercase;
 }
 .footer-links a { text-decoration: none; }

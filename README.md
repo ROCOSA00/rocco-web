@@ -32,7 +32,7 @@ supabase/gigs.sql           Tabla de próximas fechas
 4. **Próximas fechas**: tus bolos, leídos de Supabase. Las fechas pasadas desaparecen solas; si no hay ninguna, sale un aviso con enlace a Instagram y a Booking.
 5. **Experiencia**: salas (Cocoa, Titus, Classic, Malalts de Festa, Particular, El Jaleo Events, Sala Privat) que se despliegan al pulsarlas con su ubicación (enlace a Google Maps), sus redes y, si la hay, una foto tuya allí; y "Otros" (Sakova, Dejavu, Attic Electronic, Sala Duvet, Twenties, Hotel W, Zeta Dance Club).
 6. **Banda de foto** (Classic Mataró).
-7. **Música**: reproductor de SoundCloud con la pista destacada (*Se Nota (Rocco Original Mix)*) y enlaces a SoundCloud, YouTube y TikTok.
+7. **Música**: reproductor de SoundCloud con la pista destacada (*Se Nota (Rocco Original Mix)*), reproductor de tu playlist de Spotify y enlaces a SoundCloud, Spotify, YouTube y TikTok.
 8. **Booking**: formulario + email, Instagram, Linktree y botón para descargar el press kit.
 
 ## Verla en local
@@ -89,7 +89,8 @@ El PDF es `assets/rocco-presskit.pdf`. Para cambiarlo, edita `presskit/presskit.
 
 | Quiero… | Dónde |
 | --- | --- |
-| Cambiar el email o las redes | `index.html` → listas `<ul class="contact-links">` (Música y Booking) y pie (`footer-links`) |
+| Cambiar el email o las redes | `index.html` → listas `<ul class="contact-links">` (Música y Booking) y las filas de iconos `<ul class="social-icons">` (cabecera, menú móvil, portada y pie) |
+| Cambiar la playlist de Spotify | `index.html` → sección `id="musica"`: el `src` del segundo `<iframe>` (`open.spotify.com/embed/playlist/…`) y los enlaces a `open.spotify.com/playlist/…` |
 | Cambiar la pista destacada | `index.html` → sección `id="musica"`: el título en `player-title` y la URL de la pista en el `src` del `<iframe>` y en `player-link` |
 | Añadir o quitar una sala, o ponerle foto | `index.html` → lista `<ul class="venues">`: cada sala es un `<details>` con su nombre, ciudad, ubicación, red social y, opcionalmente, un `<figure class="venue-media">` con la foto (y la clase `has-media` en `venue-panel`) |
 | Añadir un bolo | Supabase → Table Editor → `gigs` → Insert row |
